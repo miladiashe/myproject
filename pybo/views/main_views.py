@@ -14,3 +14,9 @@ def index():
     #질문 목록 데이터를 쿼리로 받아오는 것
     return render_template('question/question_list.html', question_list=question_list)
 
+@bp.route('/detail/<int:question_id>/')
+def detail(question_id):
+    question = Question.query.get(question_id)
+    return render_template('question/question_detail.html', question=question)
+
+
