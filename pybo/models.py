@@ -1,14 +1,14 @@
 from pybo import db
 
-class Question(db.model):
+class Question(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    subject = db.Column(db.string(200), nullable=False)
-    contemt = db.Column(db.Text(), nullable=False)
-    create_date = db.Column(db.Datetime(), nullable=False)
+    subject = db.Column(db.String(200), nullable=False)
+    content = db.Column(db.Text(), nullable=False)
+    create_date = db.Column(db.DateTime(), nullable=False)
 
 class Answer(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    question_id = db.Column(db.Foreignkey('question.id', ondelete='CASCADE'))
+    question_id = db.Column(db.ForeignKey('question.id', ondelete='CASCADE'))
     question = db.relationship('Question', backref=db.backref('answer_set'))
-    contemt = db.Column(db.Text(), nullable=False)
-    create_date = db.Column(db.Datetime(), nullable=False)
+    content = db.Column(db.Text(), nullable=False)
+    create_date = db.Column(db.DateTime(), nullable=False)

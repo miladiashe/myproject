@@ -6,7 +6,7 @@ import config
 
 db = SQLAlchemy()
 migrate = Migrate()
-
+from . import models
 
 def create_app():
     app = Flask(__name__)
