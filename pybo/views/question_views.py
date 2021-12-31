@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template
 
 from pybo.models import Question
-bp = Blueprint('main', __name__, url_prefix='/question')
+bp = Blueprint('question', __name__, url_prefix='/question')
 
 
 @bp.route('/list/')
