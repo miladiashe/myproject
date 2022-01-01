@@ -4,7 +4,7 @@ from flask import Blueprint, render_template, request, url_for
 from werkzeug.utils import redirect
 
 from .. import db
-from ..forms import QuestionForm
+from ..forms import QuestionForm, AnswerForm
 from pybo.models import Question
 bp = Blueprint('question', __name__, url_prefix='/question')
 
@@ -18,8 +18,9 @@ def _list():
 
 @bp.route('/detail/<int:question_id>/')
 def detail(question_id):
+    form=AnswerForm
     question = Question.query.get_or_404(question_id)
-    return render_template('question/question_detail.html', question=question)
+    return render_template('question/question_detail.html', question=question, form=form)
 
 
 @bp.route('/create/', methods=('GET', 'POST'))

@@ -17,7 +17,7 @@ def create(question_id):
     if form.validate_on_submit():
         content = request.form['content']
         answer = Answer(content=content, create_date=datetime.now())
-        question.answer_set.appent(answer)
+        question.answer_set.append(answer)
         db.session.commit()
         return redirect(url_for('question.detail', question_id=question_id))
     return render_template('question/question_detail.html', question=question, form=form)
