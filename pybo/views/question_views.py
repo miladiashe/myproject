@@ -21,3 +21,4 @@ def detail(question_id):
 def create():
     form = QuestionForm()
     return render_template('question/question_form.html', form=form)
+
